@@ -1,0 +1,6 @@
+<h1>Bags</h1>
+<ul>
+	<%= render partial: "bags/bag_row", collection: @bags, as: :bag %>
+</ul>
+
+<%= link_to "Add bag", new_bag_path %>

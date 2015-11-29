@@ -1,0 +1,9 @@
+New!
+
+<%= @bag.name %>
+
+<%= form_for Item.new do |f| %>
+	<%= f.hidden_field :bag_id, value: @bag.id %>
+	<%= f.text_field :name %>
+	<%= f.submit %>
+<% end %>
