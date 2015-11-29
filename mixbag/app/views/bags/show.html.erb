@@ -1,0 +1,20 @@
+<%= content_tag :h1, @bag.name %>
+
+<%= content_tag :ul do %>
+	<% @bag.items.each do |item| %>
+		<li><%= link_to item.name, item %> <%= link_to "delete", item_path(item), method: :delete %></li>
+	<% end %>
+<% end %>
+
+<%#= link_to "Add item", controller: :items, action: :new, bag_id: @bag %>
+
+<%= form_for Item.new do |f| %>
+	<%= f.hidden_field :bag_id, value: @bag.id %>
+	<%= f.text_field :name %>
+	<%= f.submit %>
+<% end %>
+
+<%= form_tag({ controller: :bags, action: :generate}, id: @bag, method: :get ) do %>
+	<%= range_field_tag :nbr, 1, min: 1, max: @bag.items.count, step: 1 %>
+	<%= submit_tag "Generate list" %>
+<% end %>
